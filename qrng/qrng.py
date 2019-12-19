@@ -34,12 +34,17 @@ def setBackend(device='qasm_simulator'):
         backend = Aer.get_backend('qasm_simulator')
         makeCircuit(8)
         
-def getBinary():
+def randBinary():
+    setBackend(device='qasm_simulator')
     job = execute(circuit,backend=backend,shots=1)
     result = job.result().get_counts()
     value = [k for k,v in result.items() if v == 1][0]
     return value
 
-setBackend(device='qasm_simulator')
-value = getBinary()
-print(value)
+value = randBinary()
+
+def randInt():
+    global value
+    randint = int(value,2)
+    print(randint)
+    return randint
