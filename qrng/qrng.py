@@ -34,12 +34,12 @@ def setBackend(device='qasm_simulator'):
         backend = Aer.get_backend('qasm_simulator')
         makeCircuit(8)
         
-def getValue():
+def getBinary():
     job = execute(circuit,backend=backend,shots=1)
     result = job.result().get_counts()
     value = [k for k,v in result.items() if v == 1][0]
     return value
 
 setBackend(device='qasm_simulator')
-value = getValue()
+value = getBinary()
 print(value)
