@@ -40,4 +40,6 @@ def getValue():
     value = [k for k,v in result.items() if v == 1][0]
     return value
 
-
+setBackend(device='qasm_simulator')
+value = getValue()
+print(value)
